@@ -358,9 +358,44 @@ data_2021 <- data_2021 %>%
 data_2021 <- subset(data_2021, region != is.na(region))
 #Guardamos nuestro dataset resultante
 write_csv(data_2021, "/kaggle/working/data_2021.csv")
-
-
 ```
 
 Hasta ahora hemos trabajado con formato *wide* en nuestros datasets pero será necesario disponer de los mismos dataset en formato *long*. Por tanto, nuestro tercer paso será convertir estos a formato *long*.
 
+```{r, label = long}
+#Convertimos a formato long 2019
+data_2019_long <- data_2019 %>%
+ pivot_longer(cols = c(2:13),
+              names_to = "mes", 
+              values_to = "precipitaciones" )
+
+#Formato fecha 2019
+data_2019_long <- data_2019_long %>% 
+  mutate(mes = as.Date(mes, format = "%d/%m/%Y"))
+
+write_csv(data_2019_long, "/kaggle/working/data_2019_long.csv")
+
+#Convertimos a formato long 2020
+data_2020_long <- data_2020 %>%
+ pivot_longer(cols = c(2:13),
+              names_to = "mes", 
+              values_to = "precipitaciones" )
+
+#Formato fecha 2020
+data_2020_long <- data_2020_long %>% 
+  mutate(mes = as.Date(mes, format = "%d/%m/%Y"))
+
+write_csv(data_2020_long, "/kaggle/working/data_2020_long.csv")
+
+#Convertimos a formato long 2021
+data_2021_long <- data_2021 %>%
+ pivot_longer(cols = c(2:13),
+              names_to = "mes", 
+              values_to = "precipitaciones" )
+
+#Formato fecha 2021
+data_2021_long <- data_2021_long %>% 
+  mutate(mes = as.Date(mes, format = "%d/%m/%Y"))
+
+write_csv(data_2021_long, "/kaggle/working/data_2021_long.csv")
+```

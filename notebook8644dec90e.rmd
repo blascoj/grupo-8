@@ -1,4 +1,3 @@
-# %% [code]
 ---
 title: "Análisis de precipitaciones en las provincias del territorio peninsular español."
 author: "Josep Blasco Domínguez"
